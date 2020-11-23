@@ -33,8 +33,5 @@
     </declare-styleable>
     <!-- END: Ported from WearableSupport -->
 
-    <!-- START: Car Settings Preferences -->
-    <attr name="carDividerColor" format="color"/>
-    <!-- END: Car Settings Preferences -->
 
 </resources>

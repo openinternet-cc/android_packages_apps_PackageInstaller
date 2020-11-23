@@ -242,12 +242,6 @@
             <item type="bool" name="config_showSmsRole" />
             <!-- END VISIBILITY CONFIGS -->
 
-            <!-- START CAR DIMENS -->
-            <item type="dimen" name="car_action_bar_height" />
-            <item type="dimen" name="car_margin" />
-            <item type="dimen" name="car_icon_size" />
-            <!-- END CAR DIMENS -->
-
             <!-- START CAR THEMES -->
             <item type="style" name="CarSettings" />
             <!-- END CAR THEMES -->

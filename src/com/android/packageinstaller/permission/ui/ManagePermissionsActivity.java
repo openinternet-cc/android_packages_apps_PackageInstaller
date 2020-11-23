@@ -31,10 +31,6 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.android.packageinstaller.Constants;
 import com.android.packageinstaller.DeviceUtils;
-import com.android.packageinstaller.permission.ui.auto.AutoAllAppPermissionsFragment;
-import com.android.packageinstaller.permission.ui.auto.AutoAppPermissionsFragment;
-import com.android.packageinstaller.permission.ui.auto.AutoManageStandardPermissionsFragment;
-import com.android.packageinstaller.permission.ui.auto.AutoPermissionAppsFragment;
 import com.android.packageinstaller.permission.ui.handheld.ManageStandardPermissionsFragment;
 import com.android.packageinstaller.permission.ui.handheld.PermissionUsageFragment;
 import com.android.packageinstaller.permission.ui.wear.AppPermissionsFragmentWear;
@@ -51,11 +47,6 @@ public final class ManagePermissionsActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if (DeviceUtils.isAuto(this)) {
-            // Automotive relies on a different theme. Apply before calling super so that
-            // fragments are restored properly on configuration changes.
-            setTheme(R.style.CarSettings);
-        }
         super.onCreate(savedInstanceState);
 
         // If there is a previous instance, re-use its Fragment instead of making a new one.
@@ -77,8 +68,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
         String permissionName;
         switch (action) {
             case Intent.ACTION_MANAGE_PERMISSIONS:
-                if (DeviceUtils.isAuto(this)) {
-                    androidXFragment = AutoManageStandardPermissionsFragment.newInstance();
+                if (false) {
                 } else if (DeviceUtils.isTelevision(this)) {
                     fragment =
                             com.android.packageinstaller.permission.ui.television
@@ -134,14 +124,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                     userHandle = UserHandle.of(UserHandle.myUserId());
                 }
 
-                if (DeviceUtils.isAuto(this)) {
-                    if (allPermissions) {
-                        androidXFragment = AutoAllAppPermissionsFragment.newInstance(packageName,
-                                userHandle);
-                    } else {
-                        androidXFragment = AutoAppPermissionsFragment.newInstance(packageName,
-                                userHandle);
-                    }
+                if (false) {
                 } else if (DeviceUtils.isWear(this)) {
                     androidXFragment = AppPermissionsFragmentWear.newInstance(packageName);
                 } else if (DeviceUtils.isTelevision(this)) {
@@ -167,8 +150,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                     finish();
                     return;
                 }
-                if (DeviceUtils.isAuto(this)) {
-                    androidXFragment = AutoPermissionAppsFragment.newInstance(permissionName);
+                if (false) {
                 } else if (DeviceUtils.isTelevision(this)) {
                     fragment = com.android.packageinstaller.permission.ui.television
                             .PermissionAppsFragment.newInstance(permissionName);
@@ -197,14 +179,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // in automotive mode, there's no system wide back button, so need to add that
-        if (DeviceUtils.isAuto(this)) {
-            switch (item.getItemId()) {
-                case android.R.id.home:
-                    onBackPressed();
-                    return true;
-                default:
-                    return super.onOptionsItemSelected(item);
-            }
+        if (false) {
         }
         return super.onOptionsItemSelected(item);
     }

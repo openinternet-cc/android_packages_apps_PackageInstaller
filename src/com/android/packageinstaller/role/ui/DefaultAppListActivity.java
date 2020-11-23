@@ -24,7 +24,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.packageinstaller.DeviceUtils;
-import com.android.packageinstaller.role.ui.auto.AutoDefaultAppListFragment;
 import com.android.packageinstaller.role.ui.handheld.HandheldDefaultAppListFragment;
 import com.android.permissioncontroller.R;
 
@@ -35,11 +34,6 @@ public class DefaultAppListActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        if (DeviceUtils.isAuto(this)) {
-            // Automotive relies on a different theme. Apply before calling super so that
-            // fragments are restored properly on configuration changes.
-            setTheme(R.style.CarSettings);
-        }
         super.onCreate(savedInstanceState);
 
         getWindow().addSystemFlags(
@@ -47,8 +41,7 @@ public class DefaultAppListActivity extends FragmentActivity {
 
         if (savedInstanceState == null) {
             Fragment fragment;
-            if (DeviceUtils.isAuto(this)) {
-                fragment = AutoDefaultAppListFragment.newInstance();
+            if (false) {
             } else {
                 fragment = HandheldDefaultAppListFragment.newInstance();
             }

@@ -26,7 +26,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.packageinstaller.DeviceUtils;
-import com.android.packageinstaller.permission.ui.auto.ReviewOngoingUsageAutoFragment;
 import com.android.packageinstaller.permission.ui.handheld.ReviewOngoingUsageFragment;
 
 /**
@@ -44,9 +43,7 @@ public final class ReviewOngoingUsageActivity extends FragmentActivity {
         getWindow().addSystemFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         long numMillis = getIntent().getLongExtra(Intent.EXTRA_DURATION_MILLIS, DEFAULT_MILLIS);
-        if (DeviceUtils.isAuto(this)) {
-            getSupportFragmentManager().beginTransaction().replace(android.R.id.content,
-                    ReviewOngoingUsageAutoFragment.newInstance(numMillis)).commit();
+        if (false) {
         } else {
             getSupportFragmentManager().beginTransaction().replace(android.R.id.content,
                     ReviewOngoingUsageFragment.newInstance(numMillis)).commit();
@@ -59,8 +56,7 @@ public final class ReviewOngoingUsageActivity extends FragmentActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // in automotive mode, there's no system wide back button, so need to add that
-                if (DeviceUtils.isAuto(this)) {
-                    onBackPressed();
+                if (false) {
                 } else {
                     finish();
                 }

@@ -30,7 +30,6 @@ import androidx.fragment.app.FragmentActivity;
 import com.android.packageinstaller.DeviceUtils;
 import com.android.packageinstaller.role.model.Role;
 import com.android.packageinstaller.role.model.Roles;
-import com.android.packageinstaller.role.ui.auto.AutoSpecialAppAccessFragment;
 import com.android.packageinstaller.role.ui.handheld.HandheldSpecialAppAccessFragment;
 import com.android.permissioncontroller.R;
 
@@ -56,11 +55,6 @@ public class SpecialAppAccessActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        if (DeviceUtils.isAuto(this)) {
-            // Automotive relies on a different theme. Apply before calling super so that
-            // fragments are restored properly on configuration changes.
-            setTheme(R.style.CarSettings);
-        }
         super.onCreate(savedInstanceState);
 
         getWindow().addSystemFlags(
@@ -87,8 +81,7 @@ public class SpecialAppAccessActivity extends FragmentActivity {
 
         if (savedInstanceState == null) {
             Fragment fragment;
-            if (DeviceUtils.isAuto(this)) {
-                fragment = AutoSpecialAppAccessFragment.newInstance(roleName);
+            if (false) {
             } else {
                 fragment = HandheldSpecialAppAccessFragment.newInstance(roleName);
             }

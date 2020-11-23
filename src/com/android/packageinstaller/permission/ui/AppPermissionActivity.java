@@ -31,7 +31,6 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.android.packageinstaller.Constants;
 import com.android.packageinstaller.DeviceUtils;
-import com.android.packageinstaller.permission.ui.auto.AutoAppPermissionFragment;
 import com.android.packageinstaller.permission.ui.handheld.AppPermissionFragment;
 import com.android.packageinstaller.permission.utils.LocationUtils;
 import com.android.packageinstaller.permission.utils.Utils;
@@ -48,11 +47,6 @@ public final class AppPermissionActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if (DeviceUtils.isAuto(this)) {
-            // Automotive relies on a different theme. Apply before calling super so that
-            // fragments are restored properly on configuration changes.
-            setTheme(R.style.CarSettings);
-        }
         super.onCreate(savedInstanceState);
 
         getWindow().addSystemFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
@@ -99,9 +93,7 @@ public final class AppPermissionActivity extends FragmentActivity {
         String caller = getIntent().getStringExtra(EXTRA_CALLER_NAME);
 
         Fragment androidXFragment;
-        if (DeviceUtils.isAuto(this)) {
-            androidXFragment = AutoAppPermissionFragment.newInstance(packageName, permissionName,
-                    groupName, userHandle);
+        if (false) {
         } else {
             long sessionId = getIntent().getLongExtra(Constants.EXTRA_SESSION_ID,
                     INVALID_SESSION_ID);
@@ -116,14 +108,7 @@ public final class AppPermissionActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // in automotive mode, there's no system wide back button, so need to add that
-        if (DeviceUtils.isAuto(this)) {
-            switch (item.getItemId()) {
-                case android.R.id.home:
-                    onBackPressed();
-                    return true;
-                default:
-                    return super.onOptionsItemSelected(item);
-            }
+        if (false) {
         }
         return super.onOptionsItemSelected(item);
     }
